@@ -1,269 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Advanced Hair-Transplant Cost Calculator – India</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    :root{
-      --primary:#2e7d32;
-      --accent:#ffc107;
-      --bg:#f9f9f9;
-      --resultBg:#e8f5e9;
-    }
-    body{
-      font-family:Arial,Helvetica,sans-serif;
-      background:var(--bg);
-      margin:0;
-      padding:20px;
-    }
-    .card{
-      max-width:720px;
-      margin:auto;
-      background:#fff;
-      border-radius:12px;
-      box-shadow:0 4px 16px rgba(0,0,0,.08);
-      padding:30px 25px;
-    }
-    h2{color:var(--primary);margin-top:0}
-    label{font-weight:600;margin-top:12px;display:block}
-    select,input,button{
-      width:100%;
-      padding:10px 12px;
-      border:1px solid #bbb;
-      border-radius:6px;
-      font-size:1rem;
-      margin-top:6px;
-    }
-    button{
-      background:linear-gradient(135deg,var(--primary),#1b5e20);
-      color:#fff;
-      font-weight:bold;
-      border:none;
-      margin-top:20px;
-      cursor:pointer;
-      transition:.2s;
-    }
-    button:hover{filter:brightness(1.1)}
-    .result{
-      background:var(--resultBg);
-      border-radius:8px;
-      padding:20px;
-      margin-top:25px;
-      max-height:0;
-      overflow:hidden;
-      transition:max-height .4s ease-out;
-    }
-    .result.show{max-height:1200px}
-    .note{
-      background:#fff3cd;
-      border-left:4px solid var(--accent);
-      padding:10px 15px;
-      margin-top:15px;
-      font-size:.9rem;
-    }
-    .emiToggle{
-      margin-top:15px;
-    }
-    .hidden{display:none}
-    .shareLink{
-      display:inline-block;
-      margin-top:15px;
-      color:var(--primary);
-      font-weight:bold;
-      text-decoration:none;
-    }
-    .shareLink:hover{text-decoration:underline}
-    @media(max-width:480px){
-      .card{padding:20px 15px}
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Hair Cost Calculator – India</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fa;margin:0;padding:20px}
+  .card{max-width:460px;margin:auto;background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:30px 25px}
+  h2{color:#2e7d32;margin-top:0;text-align:center;font-size:1.4rem}
+  label{font-weight:600;margin-top:18px;display:block;font-size:.95rem}
+  select,input,button{width:100%;padding:12px;border:1px solid #bbb;border-radius:6px;font-size:1rem;margin-top:6px}
+  button{background:#2e7d32;color:#fff;border:none;font-weight:bold;margin-top:25px;cursor:pointer}
+  button:hover{background:#1b5e20}
+  .answer{background:#e8f5e9;padding:18px;border-radius:8px;margin-top:25px;text-align:center;font-size:1.1rem;display:none}
+  .answer span{font-weight:bold;color:#2e7d32;font-size:1.3rem}
+  .note{font-size:.8rem;color:#555;margin-top:18px;text-align:center}
+</style>
 </head>
 <body>
 <div class="card">
-  <h2>Advanced Hair-Transplant Cost Calculator – India</h2>
+  <h2>How Much Will My Hair Transplant Cost?</h2>
 
-  <!-- City -->
-  <label>Select Your City:</label>
-  <select id="city" required>
-    <option value="">Choose City</option>
-    <!-- Tier-1 -->
-    <option data-tier="1" value="Mumbai">Mumbai</option>
-    <option data-tier="1" value="Delhi">Delhi</option>
-    <option data-tier="1" value="Bangalore">Bangalore</option>
-    <option data-tier="1" value="Hyderabad">Hyderabad</option>
-    <option data-tier="1" value="Chennai">Chennai</option>
-    <option data-tier="1" value="Pune">Pune</option>
-    <option data-tier="1" value="Ahmedabad">Ahmedabad</option>
-    <option data-tier="1" value="Kolkata">Kolkata</option>
-    <option data-tier="1" value="Jaipur">Jaipur</option>
-    <option data-tier="1" value="Chandigarh">Chandigarh</option>
-    <option data-tier="1" value="Noida">Noida</option>
-    <option data-tier="1" value="Gurgaon">Gurgaon</option>
-    <!-- Tier-2 -->
-    <option data-tier="2" value="Nagpur">Nagpur</option>
-    <option data-tier="2" value="Indore">Indore</option>
-    <option data-tier="2" value="Bhopal">Bhopal</option>
-    <option data-tier="2" value="Lucknow">Lucknow</option>
-    <option data-tier="2" value="Surat">Surat</option>
-    <option data-tier="2" value="Nashik">Nashik</option>
-    <option data-tier="2" value="Kochi">Kochi</option>
-    <option data-tier="2" value="Guwahati">Guwahati</option>
-    <option data-tier="2" value="Kanpur">Kanpur</option>
-    <option data-tier="2" value="Patna">Patna</option>
-    <option data-tier="2" value="Ludhiana">Ludhiana</option>
-    <option data-tier="2" value="Varanasi">Varanasi</option>
-    <option data-tier="2" value="Rajkot">Rajkot</option>
-    <option data-tier="2" value="Vadodara">Vadodara</option>
+  <label>1. Which city are you in?</label>
+  <select id="city">
+    <option value="">Choose city</option>
+    <option>Mumbai</option><option>Delhi</option><option>Bangalore</option>
+    <option>Hyderabad</option><option>Chennai</option><option>Pune</option>
+    <option>Ahmedabad</option><option>Kolkata</option><option>Jaipur</option>
+    <option>Chandigarh</option><option>Nagpur</option><option>Indore</option>
+    <option>Bhopal</option><option>Lucknow</option><option>Surat</option>
   </select>
 
-  <!-- Norwood -->
-  <label>Norwood Scale (optional auto-grafts):</label>
-  <select id="norwood">
-    <option value="">Select to auto-fill grafts</option>
-    <option value="1000">Norwood 2 – mild recession</option>
-    <option value="1500">Norwood 3 – deep recession</option>
-    <option value="2500">Norwood 4 – front + crown</option>
-    <option value="3000">Norwood 5 – significant loss</option>
-    <option value="3500">Norwood 6 – extensive</option>
-    <option value="4000">Norwood 7 – near complete</option>
+  <label>2. How much hair have you lost?</label>
+  <select id="loss">
+    <option value="">Choose picture that matches you</option>
+    <option value="1000">Only front corners thinning</option>
+    <option value="2000">Front & top thinning</option>
+    <option value="3000">Most of top is bald</option>
+    <option value="4000">Almost complete baldness on top</option>
   </select>
 
-  <!-- Manual graft override -->
-  <label>Or enter desired grafts:</label>
-  <input type="number" id="grafts" min="500" max="6000" placeholder="e.g. 3000">
-
-  <!-- Technique -->
-  <label>Select Technique:</label>
-  <select id="technique" required>
-    <option value="">Pick a technique</option>
-    <option value="BIG-FUE|45">BIG-FUE – ₹45/graft</option>
-    <option value="IMPLANTER FUE|35">IMPLANTER FUE – ₹35/graft</option>
-    <option value="Stem Cell FUE|40">Stem Cell FUE – ₹40/graft</option>
-    <option value="DHI|60">DHI – ₹60/graft</option>
-    <option value="Sapphire FUE|50">Sapphire FUE – ₹50/graft</option>
+  <label>3. Which technique do you prefer?</label>
+  <select id="tech">
+    <option value="">Pick the technique & price</option>
+    <option value="35">FUE – ₹35 per graft (standard)</option>
+    <option value="45">DHI – ₹45 per graft (no-touch, denser)</option>
+    <option value="60">Premium Direct – ₹60 per graft (maximum density)</option>
   </select>
 
-  <!-- Surgeon level -->
-  <label>Surgeon Level:</label>
-  <select id="surgeon">
-    <option value="1">Standard surgeon</option>
-    <option value="1.15">Senior surgeon (+15%)</option>
-  </select>
+  <button onclick="showCost()">Show My Cost</button>
 
-  <!-- EMI toggle -->
-  <label class="emiToggle">
-    <input type="checkbox" id="showEmi"> Show EMI options
-  </label>
-
-  <button onclick="calculate()">Calculate Cost</button>
-
-  <!-- Result -->
-  <div id="resultBox" class="result">
-    <div id="resultText"></div>
-    <div id="emiSection" class="hidden">
-      <h4>EMI Plans (zero-cost)</h4>
-      <div id="emiPlans"></div>
-    </div>
-    <a id="shareLink" class="shareLink" href="#">🔗 Share this estimate</a>
-  </div>
-
-  <div class="note">
-    Prices include city-index multipliers and may vary ±10 % by clinic.
+  <div id="answer" class="answer">
+    Your estimated cost is<br><span id="price">₹0</span>
+    <div class="note">Final price can change a little after the doctor sees you.</div>
   </div>
 </div>
 
 <script>
-/* City-index multiplier table */
-const cityIndex = {
-  Mumbai:1.15, Delhi:1.12, Bangalore:1.10, Hyderabad:1.08,
-  Chennai:1.07, Pune:1.05, Ahmedabad:1.02, Kolkata:1.00,
-  Jaipur:0.98, Chandigarh:0.97, Noida:1.05, Gurgaon:1.10,
-  Nagpur:0.92, Indore:0.93, Bhopal:0.91, Lucknow:0.90,
-  Surat:0.94, Nashik:0.90, Kochi:0.95, Guwahati:0.88,
-  Kanpur:0.89, Patna:0.87, Ludhiana:0.92, Varanasi:0.88,
-  Rajkot:0.93, Vadodara:0.94
-};
+function showCost() {
+  const city = document.getElementById('city').value;
+  const loss = document.getElementById('loss').value;
+  const tech = document.getElementById('tech').value;
 
-function calculate(){
-  const city       = document.getElementById('city').value;
-  const norwood    = parseInt(document.getElementById('norwood').value) || 0;
-  const graftInput = parseInt(document.getElementById('grafts').value);
-  const grafts     = graftInput || norwood || 0;
-  if(!grafts){ alert('Please select Norwood grade or enter grafts'); return; }
+  if(!city || !loss || !tech){ alert('Please complete all 3 questions'); return; }
 
-  const [techName,baseRate] = document.getElementById('technique').value.split('|');
-  const surgeonMul = parseFloat(document.getElementById('surgeon').value);
-  const index      = cityIndex[city] || 1;
-  const rate       = Math.round(parseInt(baseRate) * index * surgeonMul);
+  const grafts = parseInt(loss);
+  const rate   = parseInt(tech);
+  const total  = grafts * rate;
 
-  const clinicCost = grafts * rate;
-  const marketMin  = grafts * 30;
-  const marketMax  = grafts * 70;
-
-  const time  = Math.ceil(grafts/1000)+" – "+Math.ceil(grafts/800)+" hrs";
-  const rec   = "7–10 days";
-  const grow  = "visible 3–4 mo, full 9–12 mo";
-  const succ  = "95–98 %";
-
-  // Build HTML
-  let html = `
-    <h3>Estimate for ${city}</h3>
-    <strong>Technique:</strong> ${techName}<br>
-    <strong>Grafts:</strong> ${grafts}<br>
-    <strong>Rate used:</strong> ₹${rate}/graft (city-index adjusted)<br>
-    <strong>Total cost:</strong>
-      <span style="color:green;font-size:1.2em;font-weight:bold">
-        ₹${clinicCost.toLocaleString()}
-      </span><br>
-    <strong>Market range:</strong> ₹${marketMin.toLocaleString()} – ₹${marketMax.toLocaleString()}<br>
-    <h4>Quick facts</h4>
-    <strong>Procedure time:</strong> ${time}<br>
-    <strong>Recovery:</strong> ${rec}<br>
-    <strong>Success rate:</strong> ${succ}<br>
-    <strong>Results timeline:</strong> ${grow}
-  `;
-  document.getElementById('resultText').innerHTML = html;
-
-  // EMI
-  const showEmi = document.getElementById('showEmi').checked;
-  const emiBox  = document.getElementById('emiSection');
-  const emiDiv  = document.getElementById('emiPlans');
-  if(showEmi){
-    emiBox.classList.remove('hidden');
-    emiDiv.innerHTML = [6,9,12,18].map(m=>{
-      const emi = Math.round(clinicCost/m);
-      return `<div>₹${emi.toLocaleString()} × ${m} months (0 % interest)</div>`;
-    }).join('');
-  }else{
-    emiBox.classList.add('hidden');
-  }
-
-  // Shareable link
-  const url = new URL(location.href);
-  url.searchParams.set('city',city);
-  url.searchParams.set('grafts',grafts);
-  url.searchParams.set('tech',techName);
-  const share = document.getElementById('shareLink');
-  share.href = url.toString();
-  share.textContent = '🔗 Share this estimate';
-
-  // Animate open
-  const box = document.getElementById('resultBox');
-  box.classList.add('show');
+  document.getElementById('price').textContent = '₹' + total.toLocaleString();
+  document.getElementById('answer').style.display = 'block';
 }
-
-/* Pre-fill from URL on load */
-(()=>{
-  const p = new URLSearchParams(location.search);
-  if(p.get('city')) document.getElementById('city').value = p.get('city');
-  if(p.get('grafts')) document.getElementById('grafts').value = p.get('grafts');
-  if(p.get('tech')){
-    const opts = [...document.getElementById('technique').options];
-    const opt = opts.find(o=>o.text.includes(p.get('tech')));
-    if(opt) opt.selected = true;
-  }
-})();
 </script>
 </body>
 </html>
